@@ -7,25 +7,23 @@ import os,sys
 import sqlite3 as sql
 from socket import gethostname
 
-#dat=os.path.expanduser('~/tmp/cookies.sqlite')
-
-for rac,reps,fics in os.walk(os.path.expanduser("~/.mozilla")): # test sur fichier temp ...
+for rac,reps,fics in os.walk(os.path.expanduser("~/.mozilla")):
     if 'cookies.sqlite' in fics:
         dat=os.path.join(rac,'cookies.sqlite')
 
 try:        
     db=sql.connect(dat)
 except:
-    print('Firefox semble ne pas être installé sur %s ...'%gethostname())
+    print("ERRUR : Firefox n'est peut-être pas installé sur %s ..."%gethostname())
     sys.exit()
 c=db.cursor()
-
-print('\nTuez-les tous ? (Entrez "KILL")')
+print('\n\n\t\tPROGRAMME DE SUPPRESSION DES COOKIES DANS FIREFOX\n')
+print('\nTuez-les tous ? (Entrez "KILLEMALL")')
 print('ATTENTION, cette action détruira TOUS les cookies enregistrés dans Firefox.')
 print('\nDestruction par domaine ? (Entrez "D")')
 rep=raw_input(" >> ")
 
-if rep.lower().startswith('kill'):
+if rep.startswith('KILLEM'):
     c.execute('DELETE FROM moz_cookies;')
     db.commit()
     print("Programme Terminé.")
