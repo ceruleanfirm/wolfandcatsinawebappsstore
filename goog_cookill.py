@@ -13,16 +13,16 @@ for rac,rep,fic in os.walk(os.path.expanduser('~/.config/')):
 try:
     db=sqlite3.connect(dat)
 except:
-    print('Chrome semble ne pas être installé sur %s ...'%socket.gethostname())
+    print("ERREUR : Chrome n'est peut-être pas installé sur %s ..."%socket.gethostname())
     sys.exit(0)
 c=db.cursor()
 
 print('\n\n\t\tPROGRAMME DE SUPRESSION DES COOKIES DANS CHROME\n')
-print('\nTuez-les tous ? (Entrez "KILL")')
+print('\nTuez-les tous ? (Entrez "KILLEMALL")')
 print('ATTENTION, cette action détruira TOUS les cookies enregistrés dans chrome.')
 print('\nDestruction par domaine ? (Entrez "D")')
 rep=raw_input('  >>  ')
-if rep.lower().startswith('kill'):
+if rep.startswith('KILLEM'):
     c.execute('DELETE FROM cookies;')
     db.commit()
     print('Programme Terminé')
