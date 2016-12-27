@@ -7,14 +7,22 @@ import os,sys
 import sqlite3 as sql
 from socket import gethostname
 
-for rac,reps,fics in os.walk(os.path.expanduser("~/.mozilla")):
+if sys.platform=="linux" or sys.platform=="linux2":
+    path='~/.mozilla'
+elif sys.platform=="darwin":
+    path="~/Library"
+else:
+    print('%s not supported'%sys.platform)
+    sys.exit(0)
+
+for rac,reps,fics in os.walk(os.path.expanduser(path)):
     if 'cookies.sqlite' in fics:
         dat=os.path.join(rac,'cookies.sqlite')
 
 try:        
     db=sql.connect(dat)
 except:
-    print("ERRUR : Firefox n'est peut-être pas installé sur %s ..."%gethostname())
+    print("ERREUR : Firefox n'est peut-être pas installé sur %s ..."%gethostname())
     sys.exit()
 c=db.cursor()
 print('\n\n\t\tPROGRAMME DE SUPPRESSION DES COOKIES DANS FIREFOX\n')
