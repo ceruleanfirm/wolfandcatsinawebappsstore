@@ -7,7 +7,15 @@ import os,sys
 import sqlite3 as sql
 from socket import gethostname   
 
-for i,j,f in os.walk(os.path.expanduser('~/.mozilla')):
+if sys.platform=='linux' or sys.platform=='linux2':
+    path="~/.mozilla"
+elif sys.platform=="darwin":
+    path="~/Library"
+else:
+    print('%s not supported'%sys.platform)
+    sys.exit(0)
+
+for i,j,f in os.walk(os.path.expanduser(path)):
     if 'cookies.sqlite' in f:
         dat=os.path.join(i,'cookies.sqlite')
 
