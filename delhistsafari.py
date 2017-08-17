@@ -6,7 +6,7 @@ import sqlite3, sys, os
 from time import sleep
 
 os.system('clear')
-print('')
+print
 if sys.platform=="darwin":
 	path="~/Library/Safari"
 else:
@@ -37,7 +37,6 @@ try:
         print(i)
 
 except sqlite3.Error, e:
-    #print('%s not found ...'%dat)
     print(e)
     sys.exit(2)
 
@@ -64,7 +63,7 @@ if chx=="1":
 	print('Abandon')
         sys.exit()
 elif chx=="2":
-    print('')
+    print
     while True:
         chaine=raw_input('Suppression de l\'historique contenant la chaine de caractères (domaine ou mot-clé) : ')
         if not chaine:
@@ -82,3 +81,7 @@ else:
     sys.exit()
 
 
+
+# Écrit par cerulean  <ceruleanfirm@gmail.com>  0x71F86DC1B12845E9
+# Juin 2017
+# Free For All
