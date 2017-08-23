@@ -21,7 +21,7 @@ else:
 try:
     db=sqlite3.connect(dat)
 except:
-    print('Chrome n\'est peut-être pas installé sur %s ...'%socket.gethostname())
+    print('Chrome n\'est peut-être pas installé sur %s ...'%gethostname())
     sys.exit(0)
 c=db.cursor()
 
