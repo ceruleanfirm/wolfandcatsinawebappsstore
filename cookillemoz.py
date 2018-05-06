@@ -12,7 +12,7 @@ elif sys.platform=="darwin":
     path="~/Library"
 else:
     print('%s not supported'%sys.platform)
-    sys.exit(0)
+    sys.exit(1)
 
 def find_db(path,dbname):
 	for i,j,k in os.walk(os.path.expanduser(path)):
@@ -26,7 +26,7 @@ try:
     db=sql.connect(cookies)
 except:
     print("ERREUR : Firefox n'est peut-être pas installé sur %s ..."%gethostname())
-    sys.exit()
+    sys.exit(2)
 c=db.cursor()
 print('\n\n\t\tPROGRAMME DE SUPPRESSION DES COOKIES DANS FIREFOX\n')
 print('\nTuez-les tous ? (Entrez "KILLEMALL")')
